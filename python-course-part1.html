@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Python introductory course, part 1</title>
+
+		<meta name="description" content="Python introductory course, part 1">
+		<meta name="author" content="Piotr Domagalski">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Python</h1>
+					<h3>Introductory course, part 1</h3>
+					<p>
+						<small>Piotr Domagalski</small>
+						<br/>
+						<small><a href="mailto:piotr@domagalski.com">piotr@domagalski.com</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Presentations</h2>
+					<ul>
+						<li>Control structures and data types</li>
+						<li>Python Tools for Visual Studio</li>
+
+						<li style="margin-top: 1em;">Coding like a Pythonista</li>
+						<li>Library tour?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Python</h2>
+					<ul>
+						<li>23 years old</li>
+						<li>Dynamic language</li>
+						<li>Embeddable and extendable</li>
+						<li>Interactive shell (REPL)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Implementations</h2>
+					<ul>
+						<li>CPython</li>
+						<li>Jython (JVM)</li>
+						<li>IronPython (.NET)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Python 2.x vs Python 3.x</h2>
+				</section>
+
+				<section>
+					<h2>IDE</h2>
+					<ul>
+						<li>Eclipse + PyDev</li>
+						<li>PyCharm</li>
+						<li>Python Tools for Visual Studio <span style="margin-left: 0.25em; color: #cc2222;">&#9829;</span></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Let's play in REPL!</h1>
+				</section>
+
+				<section>
+					<h2>Last value</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> 2 + 5
+7
+>>> _ * 2
+14
+>>> x = _ + 2
+>>> print(x)
+16
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Useful builtins</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> type(5)
+&lt;type 'int'&gt;
+>>> str(5) + str(5)
+'55'
+>>> len('abc')
+3
+>>> help(abs)
+Help on built-in function abs in module __builtin__:
+
+abs(...)
+    abs(number) -> number
+
+    Return the absolute value of the argument.
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Useful builtins ctnd.</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+>>> x = 5
+>>> y = 10
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'x', 'y']
+>>> del y
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'x']
+>>> y
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+NameError: name 'y' is not defined
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Sequence types: tuples, lists</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> x = (1, 2)
+>>> type(x)
+&lt;type 'tuple'&gt;
+>>> x = (1,)
+>>> type(x)
+&lt;type 'tuple'&gt;
+>>>
+>>> z = [1, 2, 3]
+>>> type(z)
+&lt;type 'list'&gt;
+>>> z[0]
+1
+>>> z[1:]    # Slicing
+[2, 3]
+>>> del z[1:]
+>>> z
+[1]
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Tuple packing and unpacking</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> x = (1, 2)
+>>> a, b = x
+>>> a
+1
+>>> b
+2
+>>> a, b = b, a
+>>> a
+2
+>>> b
+2
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Mapping type: dict</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> d = {'foo': 1, 'bar': 2}
+>>> 'foo' in d
+True
+>>> d['bar']
+2
+>>> d['x']
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+KeyError: 'x'
+>>> res = d.get('x')
+>>> print(res)
+None
+</code></pre>
+				</section>
+
+				<section>
+				<h2>Whitespace</h2>
+<pre><code class="python" data-trim contenteditable>
+if x &lt; 0:
+    print('Negative')
+elif x == 0:
+    print('Zero')
+elif x == 1:
+    print('Single')
+else:
+    while x > 0:
+        print('More')
+        x -= 1
+</code></pre>
+<p>Always indent with 4 spaces!</p>
+				</section>
+
+				<section>
+					<h2>Style</h2>
+					<ul>
+						<li><code>lower_case</code> for functions, methods, variables</li>
+						<li><code>lower_case</code> or <code>ALL_CAPS</code> for constants</li>
+						<li><code>CamelCase</code> for classes</li>
+						<li>Attributes: <code>interface</code>, <code>_internal</code></li>
+					</ul>
+
+					<p style="margin-top: 1em;">See <a href="http://legacy.python.org/dev/peps/pep-0008/">PEP8</a> for more info</p>
+				</section>
+
+				<section>
+					<h2>Looping 1</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> words = ['cat', 'window', 'defenestrate']
+>>> for w in words:
+...     print(w)
+...
+cat
+window
+defenestrate
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Looping 2</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> range(3)
+[0, 1, 2]
+>>> for i in range(3):
+...     print(i)
+...
+0
+1
+2
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Looping 3</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> words = ['cat', 'window', 'defenestrate']
+>>> for i in range(len(words)):
+...     print('{} {}'.format(i, words[i]))
+...
+0 cat
+1 window
+2 defenestrate
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Looping 4</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> words = ['cat', 'window', 'defenestrate']
+>>> for idx, el in enumerate(words):
+...     print('{} {}'.format(idx, el))
+...
+0 cat
+1 window
+2 defenestrate
+</code></pre>
+
+<h4 style="margin-top: 2em">Always use the builtins!</h4>
+				</section>
+
+				<section>
+					<h2>Looping 4</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> questions = ['name', 'quest', 'favorite color']
+>>> answers = ['lancelot', 'the holy grail', 'blue']
+>>> for q, a in zip(questions, answers):
+...     print('What is your {0}?  It is {1}.'.format(q, a))
+...
+What is your name?  It is lancelot.
+What is your quest?  It is the holy grail.
+What is your favorite color?  It is blue.
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Looping 5</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> d = {'foo': 1, 'bar': 2}
+>>> for k, v in d.iteritems():
+...     print k, v
+...
+foo 1
+bar 2
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Functions</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> def mysum(numbers):
+...     result = 0
+...     for n in numbers:
+...         result += n
+...     return result
+...
+>>> n = (1, 2, 3)
+>>> mysum(n)
+6
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Lambda</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> n = 1, 2, 3, 4, 5
+>>> def adder(x, y): return x + y
+>>> sum(n) == reduce(adder, n)
+True
+>>> sum(n) == reduce(lambda x, y: x + y, n)
+True
+</code></pre>
+				</section>
+
+				<section>
+					<h2>mymodule.py</h2>
+<pre><code class="python" data-trim contenteditable>
+MYCONST = 3.14
+_some_stuff = 'Do not touch this!'
+
+def somefunc(x):
+    return x * 2
+
+print('This will always be printed!')
+
+if __name__ == '__main__':
+    print('Only printed when run {}'.format(somefunc(3)))
+</code></pre>
+
+<h2>In REPL</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> import mymodule
+This will always be printed!
+>>> mymodule.somefunc(3)
+9
+>>> mymodule.MYCONST
+3.14
+>>> mymodule._some_stuff
+'Do not touch this!'
+>>> reload(mymodule)
+This will always be printed!
+</code></pre>
+				</section>
+
+				<section>
+					<h2>List comprehensions</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> [x**2 for x in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+>>> [x**2 for x in range(10) if x % 2 == 0]
+[0, 4, 16, 36, 64]
+
+>>> [(x, x**2) for x in range(6)]
+[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+
+>>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+>>> [fruit.strip() for fruit in freshfruit]
+['banana', 'loganberry', 'passion fruit']
+
+>>> from math import pi
+>>> [str(round(pi, i)) for i in range(1, 6)]
+['3.1', '3.14', '3.142', '3.1416', '3.14159']
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Set and dictionary comprehensions</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> a = {x for x in 'abracadabra' if x not in 'abc'}
+>>> a
+set(['r', 'd'])
+>>> {x: x**2 for x in (2, 4, 6)}
+{2: 4, 4: 16, 6: 36}
+</code></pre>
+				</section>
+
+				<section>
+					<h2>'with' statement</h2>
+<pre><code class="python" data-trim contenteditable>
+>>> with open(r'c:\python27\README.txt') as f:
+...    content = f.read()
+...
+>>> len(content)
+53978
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Useful builtins (functions)</h2>
+<pre><code class="python" data-trim contenteditable>
+sorted()
+reversed()
+reduce()
+filter()
+map()
+min() max() sum()
+all() any()
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Useful modules</h2>
+					<ul>
+						<li><code>doctest</code></li>
+						<li><code>timeit</code></li>
+						<li><code>itertools</code></li>
+						<li><code>collections</code></li>
+						<li><code>copy</code></li>
+						<li><code>pprint</code></li>
+						<li><code>antigravity</code><span style="margin-left: 1em">;-)</span></li>
+						<li><a href="https://docs.python.org/2/library/">A whole lot of more!</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Q&amp;A</h2>
+					<p>
+					... if we have time for this ;-)
+					</p>
+				</section>
+
+				<section>
+					<h2>Useful links</h2>
+					<ul>
+						<li><a href="https://docs.python.org/2/tutorial/">The Python Tutorial</a></li>
+						<li><a href="https://docs.python.org/2/library/functions.html">Built-in Functions</a></li>
+						<li><a href="https://docs.python.org/2/library/">Standard Library</a></li>
+						<li><a href="http://pythontutor.com/">Python Online Tutor</a></li>
+					</ul>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					//{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					//{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
